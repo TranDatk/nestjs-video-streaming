@@ -6,14 +6,17 @@ import {
 	HttpStatus,
 	Header,
 	Headers,
+	Logger,
 } from '@nestjs/common';
 import { VideoService } from './video.service';
 import { statSync, createReadStream } from 'fs';
 import { Response } from 'express';
+import { Cron } from '@nestjs/schedule';
 
 @Controller('video')
 export class VideoController {
 	constructor(private readonly videoService: VideoService) { }
+	private readonly logger = new Logger('Cronjob');
 
 	@Get('stream/:id')
 	@Header('Accept-Ranges', 'bytes')
@@ -48,6 +51,11 @@ export class VideoController {
 			res.writeHead(HttpStatus.OK, head); //200
 			createReadStream(videoPath).pipe(res);
 		}
+	}
+
+	@Cron('0 10 * * * *')
+	handleCron() {
+		this.logger.log('Keep the project alive');
 	}
 
 	@Get()
