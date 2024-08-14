@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateVideoDto } from './dto/create-video.dto';
-import { UpdateVideoDto } from './dto/update-video.dto';
 
 const allVideos = [
 	{
@@ -25,10 +23,6 @@ const allVideos = [
 
 @Injectable()
 export class VideoService {
-	create(createVideoDto: CreateVideoDto) {
-		return 'This action adds a new video';
-	}
-
 	findAll() {
 		return allVideos;
 	}
@@ -40,13 +34,5 @@ export class VideoService {
 		} else {
 			return `There is no video with id ${id}`;
 		}
-	}
-
-	update(id: number, updateVideoDto: UpdateVideoDto) {
-		return `This action is not implemented`;
-	}
-
-	remove(id: number) {
-		return `This action is not implemented`;
 	}
 }
