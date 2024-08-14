@@ -13,7 +13,7 @@ import { Response } from 'express';
 
 @Controller('video')
 export class VideoController {
-	constructor(private readonly videoService: VideoService) {}
+	constructor(private readonly videoService: VideoService) { }
 
 	@Get('stream/:id')
 	@Header('Accept-Ranges', 'bytes')
@@ -34,7 +34,6 @@ export class VideoController {
 			const readStreamfile = createReadStream(videoPath, {
 				start,
 				end,
-				highWaterMark: 60,
 			});
 			const head = {
 				'Content-Range': `bytes ${start}-${end}/${size}`,
@@ -50,6 +49,7 @@ export class VideoController {
 			createReadStream(videoPath).pipe(res);
 		}
 	}
+
 	@Get()
 	findAll() {
 		return this.videoService.findAll();
