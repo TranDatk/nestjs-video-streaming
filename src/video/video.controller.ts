@@ -55,8 +55,8 @@ export class VideoController {
 
 	@Cron(CronExpression.EVERY_10_MINUTES)
 	async handleCron() {
-		const res = await fetch('https://nestjs-video-streaming.onrender.com/video/stream/1');
-		this.logger.log('Keep the project alive');
+		const res = await fetch('https://nestjs-video-streaming.onrender.com/');
+		this.logger.log(await res.text());
 	}
 
 	@Get()
