@@ -13,11 +13,14 @@ Implementation of Video Streaming in Nest js and Next js, with defined some conc
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+![image](https://github.com/user-attachments/assets/771b42b3-c046-44e0-b66d-b388c9a0faae)
+
+
 ## Installation
 
 ```bash
 # Clone the repo
-git clone https://github.com/hesbon-osoro/nestjs-video-streaming.git
+git clone https://github.com/TranDatk/nestjs-video-streaming.git
 
 # Navigate to directory
 cd nestjs-video-streaming
@@ -32,21 +35,8 @@ npm install
 npm run start
 
 # watch mode
-npm run start:dev
+npm run dev
 
 # production mode
 npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-npm run test
-
-# e2e tests
-npm run test:e2e
-
-# test coverage
-npm run test:cov
 ```
