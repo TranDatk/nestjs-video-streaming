@@ -11,7 +11,7 @@ import {
 import { VideoService } from './video.service';
 import { statSync, createReadStream } from 'fs';
 import { Response } from 'express';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 @Controller('video')
 export class VideoController {
@@ -53,8 +53,9 @@ export class VideoController {
 		}
 	}
 
-	@Cron('0 10 * * * *')
-	handleCron() {
+	@Cron(CronExpression.EVERY_10_MINUTES)
+	async handleCron() {
+		const res = await fetch('https://nestjs-video-streaming.onrender.com/video/stream/1');
 		this.logger.log('Keep the project alive');
 	}
 
